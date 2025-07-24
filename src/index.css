@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.list{
+    @apply text-center hover:scale-125 hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out 
+}
