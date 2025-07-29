@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 .list{
     @apply text-center hover:scale-125 hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out 
