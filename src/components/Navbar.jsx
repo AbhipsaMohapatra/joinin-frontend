@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import { IoSunnySharp } from "react-icons/io5";
+import { BsMoonStarsFill } from "react-icons/bs";
 const Navbar = () => {
   const [mode, setMode] = useState(() => {
     return localStorage.getItem("themeN") || "light";
@@ -25,11 +26,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-amber-100 dark:bg-slate-600 dark:text-white p-7 sm:p-8">
-      <div className="flex   flex-col sm:flex-row sm:justify-between sm:items-center">
+      <div className="flex   flex-col sm:flex-row sm:justify-around sm:items-center">
         <div className="flex justify-between items-center">
           <div className="">
             
-            <h2 className="text-5xl text-blue-400 font-semibold">JoinIN</h2>
+            <h2 className="text-5xl text-cyan-400 font-semibold">JoinIN</h2>
           </div>
           <div
             className="flex gap-2 items-center sm:hidden"
@@ -67,32 +68,32 @@ const Navbar = () => {
             id="list"
           >
             <li className="text-center hover:scale-125 hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out">
-              <a className="text-2xl font-bold " href="">
+              <a className="text-xl font-bold " href="">
                 Home
               </a>
             </li>
             <li className="list">
-              <a className="text-2xl font-bold " href="">
+              <a className="text-xl font-bold " href="">
                 About
               </a>
             </li>
             <li className="list">
-              <a className="text-2xl font-bold " href="">
+              <a className="text-xl font-bold " href="">
                 Events
               </a>
             </li>
             <li className="list">
-              <a className="text-2xl font-bold " href="">
+              <a className="text-xl font-bold " href="">
                 Login/SignUp
               </a>
             </li>
           </ul>
           <div className="hidden sm:flex mb-4">
             <button
-              className="w-auto p-3 bg-blue-500 text-xl rounded-lg hover:cursor-pointer hover:scale-110 hover:transistion-all hover:duration-150 block mx-auto mt-5"
+              className="w-auto p-3 bg-blue-500 text-xl rounded-lg hover:cursor-pointer hover:scale-110 hover:transistion-all hover:duration-150 block mx-auto mt-5 hover:bg-cyan-500"
               onClick={toggleTheme}
             >
-              {mode === "dark" ? "☀ Light" : "🌙 Dark"}
+              {mode === "dark" ? <IoSunnySharp className="text-2xl"/> : <BsMoonStarsFill className="text-2xl text-white"/>}
             </button>
           </div>
         </div>
