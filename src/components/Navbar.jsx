@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { IoSunnySharp } from "react-icons/io5";
 import { BsMoonStarsFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [mode, setMode] = useState(() => {
     return localStorage.getItem("themeN") || "light";
@@ -25,12 +26,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-amber-100 dark:bg-slate-600 dark:text-white p-7 sm:p-8">
+    <nav className="  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full backdrop-blur-sm shadow-lg">
       <div className="flex   flex-col sm:flex-row sm:justify-around sm:items-center">
         <div className="flex justify-between items-center">
           <div className="">
             
-            <h2 className="text-5xl text-cyan-400 font-semibold">JoinIN</h2>
+            <h2 className="text-5xl text-cyan-600 dark:text-cyan-300 font-semibold cursor-pointer">
+              <a href="/">JoinIN</a>
+              </h2>
           </div>
           <div
             className="flex gap-2 items-center sm:hidden"
@@ -56,7 +59,7 @@ const Navbar = () => {
                 className="w-auto p-3 bg-blue-500 text-xl rounded-lg hover:cursor-pointer hover:scale-110 hover:transistion-all hover:duration-150"
                 onClick={toggleTheme}
               >
-                {mode === "dark" ? "☀ Light" : "🌙 Dark"}
+                {mode === "dark" ? <IoSunnySharp className="text-2xl"/> :  <BsMoonStarsFill className="text-2xl text-white"/>}
               </button>
             </div>
           </div>
@@ -67,24 +70,29 @@ const Navbar = () => {
             className={` sm:flex flex-col sm:flex-row gap-3 sm:gap-10 sm:my-0 ${ham?"":"hidden"}`}
             id="list"
           >
-            <li className="text-center hover:scale-125 hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out">
-              <a className="text-xl font-bold " href="">
+            <li className="text-center hover:underline hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out">
+              <NavLink className="text-xl font-bold " to="/">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="list">
-              <a className="text-xl font-bold " href="">
+              <NavLink className="text-xl font-bold " to="/about">
                 About
-              </a>
+              </NavLink>
             </li>
             <li className="list">
-              <a className="text-xl font-bold " href="">
+              <NavLink className="text-xl font-bold " to="/events">
                 Events
+              </NavLink>
+            </li>
+            <li className="list">
+              <a className="text-xl font-bold " href="">
+                Login
               </a>
             </li>
             <li className="list">
               <a className="text-xl font-bold " href="">
-                Login/SignUp
+                SignUp
               </a>
             </li>
           </ul>

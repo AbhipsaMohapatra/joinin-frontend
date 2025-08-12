@@ -3,6 +3,9 @@ import './App.css'
 import Navbar from './components/Navbar'
 import {Route,Routes,BrowserRouter} from 'react-router-dom';
 import Home from './components/Home';
+import MainPage from './components/MainPage';
+import About from './components/About';
+import Events from './components/Events';
 
 function App() {
  
@@ -14,6 +17,8 @@ function App() {
        <Navbar/>
        <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/events' element={<Events/>}/>
         
        </Routes>
      </BrowserRouter>
