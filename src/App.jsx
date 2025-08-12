@@ -6,6 +6,8 @@ import Home from './components/Home';
 import MainPage from './components/MainPage';
 import About from './components/About';
 import Events from './components/Events';
+import Login from './components/Login';
+import SignUp from './components/SignUp'
 
 function App() {
  
@@ -19,6 +21,8 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/events' element={<Events/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signUp' element={<SignUp/>}/>
         
        </Routes>
      </BrowserRouter>

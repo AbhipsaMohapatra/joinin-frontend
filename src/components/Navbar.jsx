@@ -25,6 +25,10 @@ const Navbar = () => {
    setHam((prevham)=>!prevham)
   };
 
+  const active = (e)=>{
+    return e.isActive?'text-xl font-bold':'text-xl '  
+  }
+
   return (
     <nav className="  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full backdrop-blur-sm shadow-lg">
       <div className="flex   flex-col sm:flex-row sm:justify-around sm:items-center">
@@ -71,29 +75,29 @@ const Navbar = () => {
             id="list"
           >
             <li className="text-center hover:underline hover:cursor-pointer hover:transition-all hover:duration-150 hover:ease-in-out">
-              <NavLink className="text-xl font-bold " to="/">
+              <NavLink className={active} to="/">
                 Home
               </NavLink>
             </li>
             <li className="list">
-              <NavLink className="text-xl font-bold " to="/about">
+              <NavLink className={active} to="/about">
                 About
               </NavLink>
             </li>
             <li className="list">
-              <NavLink className="text-xl font-bold " to="/events">
+              <NavLink className={active} to="/events">
                 Events
               </NavLink>
             </li>
             <li className="list">
-              <a className="text-xl font-bold " href="">
+              <NavLink className={active} to="/login">
                 Login
-              </a>
+              </NavLink>
             </li>
             <li className="list">
-              <a className="text-xl font-bold " href="">
+              <NavLink className={active} to='/signUp'>
                 SignUp
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div className="hidden sm:flex mb-4">
