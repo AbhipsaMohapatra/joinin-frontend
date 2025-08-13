@@ -3,10 +3,22 @@ import { useState, useEffect } from "react";
 import { IoSunnySharp } from "react-icons/io5";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import { logout } from "../redux/authSlice";
 const Navbar = () => {
+  //theme
   const [mode, setMode] = useState(() => {
     return localStorage.getItem("themeN") || "light";
   });
+  const {isAuthenticated,user,accountType} = useSelector((state)=>state.auth)
+  const dispatch =  useDispatch()
+
+  const handleLogout=()=>{
+    dispatch(logout());
+  }
+
+
+  //hamburger
   const [ham, setHam] = useState(false);
   useEffect(() => {
     const html = document.getElementById("html");
@@ -30,7 +42,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full backdrop-blur-sm shadow-lg">
+    <nav className="bg-yellow-100 dark:bg-slate-900  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full shadow-lg">
       <div className="flex   flex-col sm:flex-row sm:justify-around sm:items-center">
         <div className="flex justify-between items-center">
           <div className="">
@@ -89,7 +101,10 @@ const Navbar = () => {
                 Events
               </NavLink>
             </li>
-            <li className="list">
+            {isAuthenticated?<>
+            <li className="list !text-xl" onClick={handleLogout}>Logout</li>
+            </>:<>
+             <li className="list">
               <NavLink className={active} to="/login">
                 Login
               </NavLink>
@@ -99,6 +114,8 @@ const Navbar = () => {
                 SignUp
               </NavLink>
             </li>
+            </>}
+           
           </ul>
           <div className="hidden sm:flex mb-4">
             <button
