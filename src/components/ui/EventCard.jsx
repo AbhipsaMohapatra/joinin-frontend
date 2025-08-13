@@ -6,11 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const EventCard = ({ picture, title, category,Date }) => {
+const EventCard = ({ picture, title, category,Date,last_date }) => {
   return (
     <Card
       sx={{ maxWidth: 345 }}
-      className="!bg-amber-200 dark:!bg-slate-600 !text-black dark:!text-white !shadow-lg !shadow-black dark:!shadow-white cursor-pointer hover:!scale-105 !transition-all !duration-150"
+      className="!bg-amber-200 dark:!bg-slate-600 !text-black dark:!text-white !shadow-lg !shadow-black dark:!shadow-white cursor-pointer hover:!scale-105 !transition-all !duration-150 my-4"
     >
       <CardMedia
         component="img"
@@ -41,6 +41,14 @@ const EventCard = ({ picture, title, category,Date }) => {
         >
           
           Date : {Date}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.secondary" }}
+          className=" !text-black dark:!text-white"
+        >
+          
+          Deadline : {last_date}
         </Typography>
       </CardContent>
       <CardActions>

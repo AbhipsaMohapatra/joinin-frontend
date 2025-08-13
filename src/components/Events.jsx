@@ -68,7 +68,7 @@ const Events = () => {
         
 
 
-        <div className="grid grid-col-1 sm:grid-cols-4 gap-4 sm:gap-2 my-10 items-center justify-center">
+        <div className="grid grid-col-1 sm:grid-cols-4 gap-4  sm:gap-2 my-10 items-center justify-center">
           {filteredData?.map((item) => (
             <EventCard
               key={item.id}
@@ -76,6 +76,7 @@ const Events = () => {
               title={item.title}
               category={item.category}
               Date={formatDate(item.date)}
+              last_date={formatDate(item.last_date)}
             />
           ))}
 
