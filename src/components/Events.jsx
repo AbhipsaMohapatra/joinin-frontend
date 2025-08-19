@@ -77,6 +77,7 @@ const Events = () => {
               category={item.category}
               Date={formatDate(item.date)}
               last_date={formatDate(item.last_date)}
+              content={item}
             />
           ))}
 

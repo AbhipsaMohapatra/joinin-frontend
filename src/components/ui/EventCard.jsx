@@ -5,11 +5,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
-const EventCard = ({ picture, title, category,Date,last_date }) => {
+const EventCard = ({ picture, title, category,Date,last_date ,content}) => {
+  console.log("the content is ",content)
   return (
     <Card
-      sx={{ maxWidth: 345 }}
+      sx={{ width: "100%", maxWidth: 345 }}
       className="!bg-amber-200 dark:!bg-slate-600 !text-black dark:!text-white !shadow-lg !shadow-black dark:!shadow-white cursor-pointer hover:!scale-105 !transition-all !duration-150 my-4"
     >
       <CardMedia
@@ -52,7 +54,9 @@ const EventCard = ({ picture, title, category,Date,last_date }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small">
+          <Link to="/eventdesc" state={{ content }}>Learn More</Link>
+        </Button>
       </CardActions>
     </Card>
   );

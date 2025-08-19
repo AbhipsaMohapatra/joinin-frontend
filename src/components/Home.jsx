@@ -31,7 +31,7 @@ const Home = () => {
      initial={{opacity:0,y:50}}
      animate={isinView?{opacity:1,y:0}:{}}
      transition={{ duration: 0.8, ease: "easeOut" }}
-     className="min-h-[100vh] container-fluid bg-gradient-to-l from-yellow-200 to-amber-600 dark:bg-slate-700 dark:bg-none p-10 sm:p-30  rounded-lg font-mono">
+     className="min-h-[100vh] container-fluid bg-white dark:bg-slate-700 dark:bg-none p-10 sm:p-30  rounded-lg font-mono">
       <div className="container flex flex-col-reverse sm:flex-row gap-6 sm:gap-10 mx-auto">
         <div className="w-full sm:w-1/2 my-20 sm:my-10   p-10 dark:text-white ">
           <p className="capitalize text-2xl sm:text-4xl  dark:text-cyan-400">
