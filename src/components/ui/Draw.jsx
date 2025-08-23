@@ -11,45 +11,61 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import NameAvatar from './NameAvatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import EventIcon from '@mui/icons-material/Event';
+import {login} from "../../redux/authSlice"
+import { useDispatch,useSelector } from 'react-redux';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import { Link } from 'react-router-dom';
 
 
 
 const Draw = ({name}) => {
      const [open, setOpen] = React.useState(false);
+     const { isAuthenticated, user, accountType } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
+  const userMenu = ['About me', 'My Events', 'All Events','Ask AI'];
+const adminMenu = ['About me', 'Add Event', 'All Events', 'See Feedbacks','Ask AI'];
+
+const data =( user.role==='admin' ? adminMenu : userMenu);
+
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+    <Box sx={{ width: 280 }} role="presentation" onClick={toggleDrawer(false)} >
+      <List sx={{ '& .MuiTypography-root': { fontSize: 20 } }} className='!flex !flex-col !justify-center !items-center'>
+        {data.map((text, index) => (
+          <ListItem key={text} disablePadding className="hover:!bg-amber-300 !text-center !p-5" >
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index==0&& <AccountCircleIcon sx={{fontSize:30}}/>}
+                {index==1&&<EmojiEventsIcon sx={{fontSize:30}}/>}
+                {index==2 && <EventIcon sx={{fontSize:30}}/>}
+                {index==3 && <ThumbUpAltIcon sx={{fontSize:30}}/> }
+                {index==data.length-1 && <SmartToyIcon sx={{fontSize:30}}/>}
+
+                
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemButton component={Link} to={'/aboutme'}>
+            <ListItemText primary={text} />
+          </ListItemButton>
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      
     </Box>
+    
   );
+  
 
   return (
     <>

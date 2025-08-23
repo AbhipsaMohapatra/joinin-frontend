@@ -54,7 +54,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-yellow-100 dark:bg-slate-900  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full shadow-lg">
+    <nav className="bg-yellow-100 dark:bg-slate-900  p-7 sm:p-3 fixed dark:text-white top-0 left-0 w-full shadow-lg z-10">
       <div className="flex   flex-col sm:flex-row sm:justify-around sm:items-center">
         <div className="flex justify-between items-center">
           <div className="">
@@ -92,7 +92,7 @@ const Navbar = () => {
             </div>
             {isAuthenticated && (
               <div className="cursor-hover">
-                {user.role==="admin"?<Draw name={user.username}/>:<Draw name={user.name}/>}
+                {user.role==="admin"?<Draw name={user.name}/>:<Draw name={user.name}/>}
               </div>
             )}
           </div>
@@ -143,7 +143,7 @@ const Navbar = () => {
           </ul>
           <div className="hidden sm:flex mb-4">
             <button
-              className="w-auto p-3 bg-blue-500 text-xl rounded-lg hover:cursor-pointer hover:scale-110 hover:transistion-all hover:duration-150 block mx-auto mt-5 hover:bg-cyan-500"
+              className="w-auto p-3 ml-3 bg-blue-500 text-xl rounded-lg hover:cursor-pointer hover:scale-110 hover:transistion-all hover:duration-150 block mx-auto mt-5 hover:bg-cyan-500"
               onClick={toggleTheme}
             >
               {mode === "dark" ? (
@@ -156,7 +156,7 @@ const Navbar = () => {
         </div>
         {isAuthenticated && (
           <div className="cursor-hover hidden sm:flex">
-            {user.role==="admin"?<Draw name={user.username}/>:<Draw name={user.name}/>}
+            {user.role==="admin"?<Draw name={user.name}/>:<Draw name={user.name}/>}
             
           </div>
         )}

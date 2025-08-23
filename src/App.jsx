@@ -9,6 +9,7 @@ import Events from './components/Events';
 import Login from './components/Login';
 import SignUp from './components/SignUp'
 import EventDesc from './components/ui/EventDesc';
+import AboutMe from './components/ui/AboutMe';
 
 function App() {
  
@@ -25,6 +26,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/eventdesc' element={<EventDesc/>}/>
+        <Route path='/aboutme' element={<AboutMe/>}/>
         
        </Routes>
      </BrowserRouter>

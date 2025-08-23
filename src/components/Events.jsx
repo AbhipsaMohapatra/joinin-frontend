@@ -50,7 +50,7 @@ const Events = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className=" p-10 sm:p-20 bg-gradient-to-r from-yellow-400 to-amber-200 dark:bg-slate-700 dark:bg-none rounded-lg"
     >
-      <div className="container border my-30 sm:my-20 p-10 mx-auto">
+      <div className="container border my-30 sm:my-20 p-10 mx-auto bg-yellow-200 dark:bg-slate-600 shadow-lg shadow-black dark:shadow-white">
         <h2 className="font-mono font-bold text-2xl sm:text-3xl text-center dark:text-white">
           Event Lists
         </h2>

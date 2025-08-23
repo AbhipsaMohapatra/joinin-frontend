@@ -2,10 +2,14 @@ import React, { useRef, useState, useEffect } from "react";
 // Import Swiper React components
 import { useLocation } from "react-router-dom";
 import Divider from "@mui/material/Divider";
+import RegisterModal from "./RegisterModal";
+
+
 
 const EventDesc = () => {
   const location = useLocation();
   const { content } = location.state || {};
+  const [open, setOpen] = React.useState(false);
 
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -21,9 +25,11 @@ function isAvail(a, b) {
   return end < last;
 }
 
+
+
   return (
-    <section>
-      <div className="mx-auto w-full sm:w-1/2 border my-[30%] sm:mt-[10%] rounded-lg p-10 dark:bg-slate-700 dark:text-white flex flex-col gap-10">
+    <section className="bg-amber-200 dark:bg-slate-500 border">
+      <div className="mx-auto w-full sm:w-1/2 border my-[30%] sm:mt-[10%] rounded-lg p-10 bg-gray-100 dark:bg-slate-800 dark:text-white flex flex-col gap-10 shadow-md shadow-black dark:shadow-white">
         <div className="w-full h-[200px] sm:h-[300px]">
           <img src={content.picture} className="w-full h-full object-cover" />
         </div>
@@ -51,12 +57,20 @@ function isAvail(a, b) {
             </p>
           </div>
         </div>
+
+        <div>
+
+        
+          <RegisterModal open={open} setOpen={setOpen}/>
+        </div>
+
+
         <button
           type="button"
           disabled={isAvail(content.last_date, content.date)}
           className="bg-cyan-600 p-3 rounded-lg cursor-pointer font-bold text-xl hover:bg-green-500 hover:transition-all hover:duration-150"
         >
-          Register
+          Add FeedBack
         </button>
       </div>
     </section>
