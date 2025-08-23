@@ -81,17 +81,7 @@ const Events = () => {
             />
           ))}
 
-          <EventCard
-            picture={"/winnerPic.jpg"}
-            title={"AI workshop for techies"}
-            category={"WorkShop"}
-
-          />
-          <EventCard
-            picture={"/winnerPic.jpg"}
-            title={"Title"}
-            category={"WorkShop"}
-          />
+          
         </div>
       </div>
     </motion.section>

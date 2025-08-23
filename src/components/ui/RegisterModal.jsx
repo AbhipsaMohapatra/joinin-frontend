@@ -23,31 +23,32 @@ const style = {
 const RegisterModal = ({ open, setOpen }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [ph,setPh] = useState(false);
-  const [name,setName] = useState(false);
-  const [email,setEmail] = useState(false);
+  const [form, setForm] = useState({name:"",email:"",phone:""})
+  const [error,setError] = useState({flag:false,message:""})
 
-  const handleSubmit = (e) => {
+  const handleChange = (e)=>{
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    if(formData.get("name").length==0){
-        setName(true);
+    setForm({...form,[e.target.name]:e.target.value});
+    setError({flag:false,message:""})
+
+  }
+
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    if(form.name=="" || form.email=="" || form.phone==""){
+      setError({flag:true,message:"Please Fill All The Feilds"});
+      return;
     }
-    if(formData.get("email").length==0){
-        setEmail(true);
+    if(form.phone.trim().length!=10){
+      setError({flag:true,message:"Check your phone number"})
+      return;
     }
-    if(formData.get("phone").length<10){
-        setPh(true);
-    }
-    console.log({
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-    });
-    setName(false);
-    setEmail(false);
-    setPh(false);
-    e.currentTarget.reset();
+    
+
+    console.log(form);
+
+    // Reset state after submit
+    setForm({ name: "", email: "", phone: "" });
   };
   return (
     <div>
@@ -79,8 +80,10 @@ const RegisterModal = ({ open, setOpen }) => {
             <TextField
               id="name"
               name="name"
-              error={name}
-              helperText={name ? "Please enter a valid phone number" : ""}
+              value={form.name}
+              onChange={handleChange}
+              
+              
               label="Name"
               variant="outlined"
               fullWidth
@@ -89,9 +92,10 @@ const RegisterModal = ({ open, setOpen }) => {
             
             <TextField
               id="email"
-              helperText={email ? "Please enter a valid phone number" : ""}
+              
               name="email"
-              error={email}
+              value={form.email}
+              onChange={handleChange}
               label="Email"
               type="email"
               variant="outlined"
@@ -99,14 +103,16 @@ const RegisterModal = ({ open, setOpen }) => {
             />
             <TextField
               id="phone"
-              error={ph}
-              helperText={ph ? "Please enter a valid phone number" : ""}
+              value={form.phone}
+              onChange={handleChange}
+              
               name="phone"
               label="Phone"
               type="tel"
               variant="outlined"
               fullWidth
             />
+            {error.flag&& <p className="text-red-500 text-xl">{error.message}</p>}
 
             <Button type="submit" variant="contained" className="!mt-4">
               Submit

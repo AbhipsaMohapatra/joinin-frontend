@@ -31,7 +31,7 @@ function isAvail(a, b) {
     <section className="bg-amber-200 dark:bg-slate-500 border">
       <div className="mx-auto w-full sm:w-1/2 border my-[30%] sm:mt-[10%] rounded-lg p-10 bg-gray-100 dark:bg-slate-800 dark:text-white flex flex-col gap-10 shadow-md shadow-black dark:shadow-white">
         <div className="w-full h-[200px] sm:h-[300px]">
-          <img src={content.picture} className="w-full h-full object-cover" />
+          <img src={content?.picture || "/cardImage1.avif"} className="w-full h-full object-cover" />
         </div>
 
         <div className="flex flex-col gap-4">

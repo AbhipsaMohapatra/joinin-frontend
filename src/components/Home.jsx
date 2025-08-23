@@ -2,10 +2,13 @@ import React from "react";
 import Typed from "typed.js";
 import { useRef } from "react";
 import { motion,useInView } from "motion/react";
+import { useSelector, useDispatch } from "react-redux";
 const Home = () => {
   const el = React.useRef(null);
   const sectionRef = useRef(null);
   const isinView = useInView(sectionRef,{once:true});
+
+  const {user,isAuthenticated} = useSelector((state)=>state.auth)
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
@@ -35,7 +38,7 @@ const Home = () => {
       <div className="container flex flex-col-reverse sm:flex-row gap-6 sm:gap-10 mx-auto">
         <div className="w-full sm:w-1/2 my-20 sm:my-10   p-10 dark:text-white ">
           <p className="capitalize text-2xl sm:text-4xl  dark:text-cyan-400">
-            Welcome to Join In, Folks! 
+            Welcome to Join In, <span className="font-bold text-cyan-500">{isAuthenticated?user.name:"Folks!"} </span> 
             
           
           </p>
