@@ -11,6 +11,7 @@ import SignUp from './components/SignUp'
 import EventDesc from './components/ui/EventDesc';
 import AboutMe from './components/ui/AboutMe';
 
+
 function App() {
  
 
@@ -18,6 +19,8 @@ function App() {
     <>
      {/* <div className='text-4xl'>Lets start</div> */}
      <BrowserRouter>
+     
+      
        <Navbar/>
        <Routes>
         <Route path='/' element={<Home/>}/>

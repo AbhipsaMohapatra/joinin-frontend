@@ -6,7 +6,10 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import { use } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+
+
 
 const style = {
   position: "absolute",
@@ -20,11 +23,13 @@ const style = {
   p: 4,
 };
 
-const RegisterModal = ({ open, setOpen }) => {
+const RegisterModal = ({ open, setOpen , id,toast}) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [form, setForm] = useState({name:"",email:"",phone:""})
   const [error,setError] = useState({flag:false,message:""})
+  const {user,token} = useSelector((state)=>state.auth);
+  
 
   const handleChange = (e)=>{
     e.preventDefault();
@@ -33,7 +38,7 @@ const RegisterModal = ({ open, setOpen }) => {
 
   }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
     if(form.name=="" || form.email=="" || form.phone==""){
       setError({flag:true,message:"Please Fill All The Feilds"});
@@ -43,12 +48,42 @@ const RegisterModal = ({ open, setOpen }) => {
       setError({flag:true,message:"Check your phone number"})
       return;
     }
+    try{
+       const res= await fetch(`http://localhost:3000/api/events/${id}/register`,{method:"POST",headers:{"Content-Type":"application/json","Authorization":`Bearer ${token}`},body:JSON.stringify(form)});
+
+    const data = await res.json();
+    console.log(data)
+
+    
+     
+      if(data.message==="Registration Successful"){
+         toast.success(data.message);
+
+      }
+      else{
+        toast.error(data.message)
+      }
     
 
-    console.log(form);
+    }catch(e){
+      toast.error(e);
+
+
+    }
+    finally{
+      setForm({ name: "", email: "", phone: "" });
+
+    }
+
+   
+
+
+    
+
+    
 
     // Reset state after submit
-    setForm({ name: "", email: "", phone: "" });
+    
   };
   return (
     <div>
