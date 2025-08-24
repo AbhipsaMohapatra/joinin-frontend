@@ -27,7 +27,11 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    let c = prompt("Are you sure you want to logout ? type yes or no");
+    if(c.toLowerCase()==="yes"){
+
+      dispatch(logout());
+    }
   };
 
   //hamburger

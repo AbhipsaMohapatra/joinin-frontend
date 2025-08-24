@@ -34,30 +34,36 @@ const Draw = ({name}) => {
     setOpen(newOpen);
   };
 
-  const userMenu = ['About me', 'My Events', 'All Events','Ask AI'];
-const adminMenu = ['About me', 'Add Event', 'All Events', 'See Feedbacks','Ask AI'];
+  // const userMenu = ['About me', 'My Events', 'All Events','Ask AI'];
+  const userMenu = [
+     { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
+      { text: "My Events", path: "/events", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
+      { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
+      { text: "Ask AI", path: "/events", icon: <SmartToyIcon sx={{fontSize:30}}/> },
+  ];
+
+// const adminMenu = ['About me', 'Add Event', 'All Events', 'See Feedbacks','Ask AI'];
+  const adminMenu = [
+     { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
+      { text: "Add Events", path: "/events", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
+      { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
+      { text: "See Feedbacks", path: "/events", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
+
+      { text: "Ask AI", path: "/events", icon: <SmartToyIcon sx={{fontSize:30}}/> },
+  ];
+
 
 const data =( user.role==='admin' ? adminMenu : userMenu);
 
   const DrawerList = (
     <Box sx={{ width: 280 }} role="presentation" onClick={toggleDrawer(false)} >
       <List sx={{ '& .MuiTypography-root': { fontSize: 20 } }} className='!flex !flex-col !justify-center !items-center'>
-        {data.map((text, index) => (
-          <ListItem key={text} disablePadding className="hover:!bg-amber-300 !text-center !p-5" >
-            <ListItemButton>
-              <ListItemIcon>
-                {index==0&& <AccountCircleIcon sx={{fontSize:30}}/>}
-                {index==1&&<EmojiEventsIcon sx={{fontSize:30}}/>}
-                {index==2 && <EventIcon sx={{fontSize:30}}/>}
-                {index==3 && <ThumbUpAltIcon sx={{fontSize:30}}/> }
-                {index==data.length-1 && <SmartToyIcon sx={{fontSize:30}}/>}
-
-                
-              </ListItemIcon>
-              <ListItemButton component={Link} to={'/aboutme'}>
-            <ListItemText primary={text} />
+        {data.map((item, index) => (
+          <ListItem key={index} disablePadding className="hover:!bg-amber-300 !text-center !p-5" >
+          <ListItemButton component={Link} to={item.path}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
           </ListItemButton>
-            </ListItemButton>
           </ListItem>
         ))}
       </List>
