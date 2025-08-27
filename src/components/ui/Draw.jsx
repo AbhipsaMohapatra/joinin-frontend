@@ -39,7 +39,7 @@ const Draw = ({name}) => {
      { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
       { text: "My Events", path: "/events", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
-      { text: "Ask AI", path: "/events", icon: <SmartToyIcon sx={{fontSize:30}}/> },
+      { text: "Ask AI", path: "/ai", icon: <SmartToyIcon sx={{fontSize:30}}/> },
   ];
 
 // const adminMenu = ['About me', 'Add Event', 'All Events', 'See Feedbacks','Ask AI'];
@@ -49,7 +49,7 @@ const Draw = ({name}) => {
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
       { text: "See Feedbacks", path: "/events", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
 
-      { text: "Ask AI", path: "/events", icon: <SmartToyIcon sx={{fontSize:30}}/> },
+      { text: "Ask AI", path: "/ai", icon: <SmartToyIcon sx={{fontSize:30}}/> },
   ];
 
 

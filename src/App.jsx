@@ -10,6 +10,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp'
 import EventDesc from './components/ui/EventDesc';
 import AboutMe from './components/ui/AboutMe';
+import AI from './components/AiUi/AI';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/eventdesc' element={<EventDesc/>}/>
         <Route path='/aboutme' element={<AboutMe/>}/>
+        <Route path='/ai' element={<AI/>}/>
         
        </Routes>
      </BrowserRouter>
