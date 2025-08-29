@@ -93,34 +93,34 @@ const EventDesc = () => {
 
         <div className="flex flex-col gap-4">
           <h2 className="text-center text-2xl mb-4 font-bold">
-            {content.title}
+            {content?.title}
           </h2>
 
           <div>
             <h1 className="text-2xl mb-2">About The Event</h1>
             <Divider />
-            <p className="my-3 text-xl">{content.description}</p>
+            <p className="my-3 text-xl">{content?.description}</p>
           </div>
 
           <div>
             <h1 className="text-2xl mb-2">Addition Information</h1>
             <Divider />
-            <p className="my-3 text-xl">Category : {content.category}</p>
-            <p className="my-3 text-xl">Date : {formatDate(content.date)}</p>
-            <p className="my-3 text-xl">Venue: {content.venue}</p>
-            <p className="my-3 text-xl">Time: {content.time}</p>
+            <p className="my-3 text-xl">Category : {content?.category}</p>
+            <p className="my-3 text-xl">Date : {formatDate(content?.date)}</p>
+            <p className="my-3 text-xl">Venue: {content?.venue}</p>
+            <p className="my-3 text-xl">Time: {content?.time}</p>
             <p className="my-3 text-xl text-red-600 dark:text-red-400">
-              Last Date: {formatDate(content.last_date)}
+              Last Date: {formatDate(content?.last_date)}
             </p>
           </div>
         </div>
 
         <div>
-          {isAvail(content.last_date) ? (
+          {isAvail(content?.last_date) ? (
             <RegisterModal
               open={open}
               setOpen={setOpen}
-              id={content.id}
+              id={content?.id}
               toast={toast}
             />
           ) : (

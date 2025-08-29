@@ -13,6 +13,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
@@ -142,9 +143,11 @@ const MyEvents = () => {
               </TableHead>
               <TableBody>
                 {events?.map((row) => (
+                     
                   <StyledTableRow key={row.rid} className="dark:!bg-gray-300">
+                    {/* {console.log(JSON.stringify(row))} */}
                     <StyledTableCell className="px-10 sm:!px-6 !py-4 !font-bold  sm:!text-xl hover:!text-blue-500 hover:!cursor-pointer " component="th" scope="row">
-                      {row.title}
+                       <Link to="/eventdesc" state={{ content: row } }>{row.title}</Link>
                     </StyledTableCell>
                     <StyledTableCell className="table" align="right">
                       {formatDateTime(row.date).date+" "+formatDateTime(row.date).time}

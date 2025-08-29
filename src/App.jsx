@@ -12,6 +12,7 @@ import EventDesc from './components/ui/EventDesc';
 import AboutMe from './components/ui/AboutMe';
 import AI from './components/AiUi/AI';
 import MyEvents from './components/ui/MyEvents';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path='/myevents' element={<MyEvents/>}/>
         
        </Routes>
+       <Footer/>
      </BrowserRouter>
 
     </>
