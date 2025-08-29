@@ -26,10 +26,10 @@ const style = {
 
 const RegisterModal = ({ open, setOpen , id,toast}) => {
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [form, setForm] = useState({name:"",email:"",phone:""})
-  const [error,setError] = useState({flag:false,message:""})
   const {user,token} = useSelector((state)=>state.auth);
+  const handleClose = () => setOpen(false);
+  const [form, setForm] = useState({name:"",email:"",phone:"",user_id:user?.id})
+  const [error,setError] = useState({flag:false,message:""})
   
 
   const handleChange = (e)=>{
@@ -72,7 +72,7 @@ const RegisterModal = ({ open, setOpen , id,toast}) => {
 
     }
     finally{
-      setForm({ name: "", email: "", phone: "" });
+      setForm({ name: "", email: "", phone: "",user_id:user.id });
 
     }
 

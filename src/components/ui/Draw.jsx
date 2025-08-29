@@ -37,7 +37,7 @@ const Draw = ({name}) => {
   // const userMenu = ['About me', 'My Events', 'All Events','Ask AI'];
   const userMenu = [
      { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
-      { text: "My Events", path: "/events", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
+      { text: "My Events", path: "/myevents", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
       { text: "Ask AI", path: "/ai", icon: <SmartToyIcon sx={{fontSize:30}}/> },
   ];
@@ -56,10 +56,10 @@ const Draw = ({name}) => {
 const data =( user.role==='admin' ? adminMenu : userMenu);
 
   const DrawerList = (
-    <Box sx={{ width: 280 }} role="presentation" onClick={toggleDrawer(false)} >
+    <Box sx={{ width: 280 }} role="presentation" onClick={toggleDrawer(false)} className="dark:!bg-slate-500 dark:!text-white !min-h-[100%]">
       <List sx={{ '& .MuiTypography-root': { fontSize: 20 } }} className='!flex !flex-col !justify-center !items-center'>
         {data.map((item, index) => (
-          <ListItem key={index} disablePadding className="hover:!bg-amber-300 !text-center !p-5" >
+          <ListItem key={index} disablePadding className="hover:!bg-amber-300 !text-center !p-5 dark:hover:!text-black" >
           <ListItemButton component={Link} to={item.path}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />

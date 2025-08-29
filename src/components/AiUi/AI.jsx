@@ -33,8 +33,9 @@ const AI = () => {
             toast.error("Server error please wait for the api to respond");
 
           }
-          let ans = res.json();
+          let ans = await res.json();
           setData(ans.answer);
+          console.log(ans)
           setPrompt("");
 
 
