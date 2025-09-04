@@ -39,6 +39,8 @@ const Draw = ({name}) => {
      { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
       { text: "My Events", path: "/myevents", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
+      { text: "See Feedbacks", path: "/feedback", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
+
       { text: "Ask AI", path: "/ai", icon: <SmartToyIcon sx={{fontSize:30}}/> },
   ];
 
@@ -47,7 +49,7 @@ const Draw = ({name}) => {
      { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
       { text: "Add Events", path: "/addevents", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
-      { text: "See Feedbacks", path: "/events", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
+      { text: "See Feedbacks", path: "/feedback", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
 
       { text: "Ask AI", path: "/ai", icon: <SmartToyIcon sx={{fontSize:30}}/> },
   ];

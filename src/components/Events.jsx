@@ -41,7 +41,7 @@ const Events = () => {
 
   const filteredData = data.filter((item)=>
     item.title.toLowerCase().includes(searchTerm.toLowerCase()) || item.category.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  ).sort((a,b)=> new Date(b.date)- new Date(a.date));
   return (
     <motion.section
       ref={sectionRef}

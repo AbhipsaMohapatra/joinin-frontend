@@ -114,7 +114,7 @@ const Login = () => {
         dispatch(
           login({
             user: dataBody.user,
-            token: jwtToken,
+            token,
             accountType: jwtToken.role,
           })
         );

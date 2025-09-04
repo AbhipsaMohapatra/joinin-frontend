@@ -8,16 +8,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
 import toast, { Toaster } from "react-hot-toast";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import { useSelector, useDispatch } from "react-redux";
-
 
 const AddEvent = () => {
   const sectionRef = useRef(null);
   const isinView = useInView(sectionRef, { once: true });
   const [add, setAdd] = useState(true);
-  const [loading,setLoading] = useState(false);
-  const {token} = useSelector((state)=>state.auth)
+  const [loading, setLoading] = useState(false);
+  const {user,token} = useSelector((state)=>state.auth);
+  
   const {
     register,
     reset,
@@ -25,60 +25,68 @@ const AddEvent = () => {
     handleSubmit,
   } = useForm();
 
-  
   const onSubmit = async (formData) => {
-  try {
-    setLoading(true);
-    let finalData;
-    // Prepare FormData for Cloudinary
-    const data = new FormData();
-    data.append("file", formData.picture[0]); // picture is a FileList
-    data.append("upload_preset", "Joinin"); // Your Cloudinary preset
+    try {
+      setLoading(true);
+      let finalData;
+      // Prepare FormData for Cloudinary
+      const data = new FormData();
+      data.append("file", formData.picture[0]); // picture is a FileList
+      data.append("upload_preset", "Joinin"); // Your Cloudinary preset
 
-    // Upload to Cloudinary
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/divrqv1q7/image/upload",
-      {
-        method: "POST",
-        body: data,
+      // Upload to Cloudinary
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/divrqv1q7/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      const upload = await res.json();
+
+      if (upload.secure_url) {
+        // Merge uploaded image URL into form data
+        finalData = {
+          ...formData,
+          time:
+            formData.time.length === 5 ? `${formData.time}:00` : formData.time, // HH:mm → HH:mm:ss
+          last_date: formData.last_date.includes("T")
+            ? formData.last_date.replace("T", " ") + ":00" // from datetime-local → YYYY-MM-DD HH:mm:ss
+            : formData.last_date, // already formatted correctly
+          picture: upload.secure_url,
+        };
+        
+
+        toast.success("Event submitted with image!");
+      } else {
+        toast.error("Image upload failed");
       }
-    );
 
-    const upload = await res.json();
+      const result = await fetch("http://localhost:3000/api/events/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(finalData),
+      });
+      let resdata = await result.json();
 
-    if (upload.secure_url) {
-      // Merge uploaded image URL into form data
-       finalData = {
-        ...formData,
-        picture: upload.secure_url,
-      };
-
-      
-      toast.success("Event submitted with image!");
-    } else {
-      toast.error("Image upload failed");
-    }
-
-    const result = await fetch('http://localhost:3000/api/events/create',{method:"POST",headers:{"Content-Type":"application/json","Authorization":`Bearer ${token}`},body:JSON.stringify(finalData)});
-    let resdata = await result.json();
-
-    if(result.ok){
+      if (result.status == 200) {
         toast.success("Event created Successfully");
+        console.log("the res data is " + JSON.stringify(resdata));
         reset();
         setAdd(true);
-
-
+      } else {
+        toast.error(resdata?.message || "Failed to create event");
+      }
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
     }
-    else{
-         toast.error(resdata?.message || "Failed to create event");
-    }
-  } catch (err) {
-    toast.error(err.message);
-  }
-  finally{
-    setLoading(false);
-  }
-};
+  };
   return (
     <motion.section
       ref={sectionRef}
@@ -87,7 +95,7 @@ const AddEvent = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className=" p-10 sm:p-20 bg-gradient-to-r min-h-[80vh] from-yellow-400 to-amber-200 dark:bg-slate-800 dark:bg-none rounded-lg"
     >
-         <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container min-h-[20vh]  my-30 sm:my-20 p-10 mx-auto bg-yellow-200 dark:bg-slate-700 w-full sm:w-1/2 border-2 border-dotted dark:border-white">
         <div className="flex justify-center items-center gap-5">
           <p className="text-3xl font-bold font-mono dark:text-white">
@@ -283,7 +291,6 @@ const AddEvent = () => {
                   type="file"
                   name="picture"
                   id="picture"
-                  
                   className="border w-1/2 px-4 py-2 dark:bg-slate-700 dark:text-white"
                   {...register("picture", {
                     required: "Please upload a picture",
@@ -341,7 +348,7 @@ const AddEvent = () => {
              before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent 
              before:skew-x-[-20deg] before:transition-all before:duration-900 hover:before:left-[100%] hover:scale-105"
               >
-               {loading?<CircularProgress/>:"Submit"}
+                {loading ? <CircularProgress /> : "Submit"}
               </button>
             </form>
           </div>

@@ -14,6 +14,7 @@ import AI from './components/AiUi/AI';
 import MyEvents from './components/ui/MyEvents';
 import Footer from './components/Footer';
 import AddEvent from './components/AddEvent';
+import FeedBack from './components/FeedBack';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path='/ai' element={<AI/>}/>
         <Route path='/myevents' element={<MyEvents/>}/>
         <Route path='/addevents' element={<AddEvent/>}/>
+        <Route path='/feedback' element={<FeedBack/>}/>
         
        </Routes>
        <Footer/>
