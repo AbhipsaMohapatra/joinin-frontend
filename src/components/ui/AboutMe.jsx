@@ -20,21 +20,35 @@ const AboutMe = () => {
             </div>
             <div className='my-2 flex gap-2'>
                 <h2>Name :</h2>
-                <p>{user.name}</p>
+                <input type="text" name="" id="" value={user.name} className='w-1/2 border px-2 bg-gray-300 text-slate-900 dark:bg-slate-800 dark:text-white' />
+                {/* <p>{user.name}</p> */}
                  
                
             </div>
-            <p className='my-2'>
-                 Email Address : {user.email}
+            <div className='my-2 flex gap-2'>
+                <h2>Email :</h2>
+                <input type="text" name="" id="" value={user.email} className='w-1/2 border px-2 bg-gray-300 text-slate-900 dark:bg-slate-800 dark:text-white' />
+                {/* <p>{user.name}</p> */}
 
-            </p>
-            <p className='my-2'>
-                Role : {user.role}
-            </p>
-            <p className='my-2'>
-                Id : {user.id}
-            </p>
-            
+                 
+               
+            </div>
+             <div className='my-2 flex gap-2'>
+                <h2>Role :</h2>
+                <input type="text" name="" id="" value={user.role} className='w-1/2 border px-2 bg-gray-300 text-slate-900 dark:bg-slate-800 dark:text-white' />
+                {/* <p>{user.name}</p> */}
+
+                 
+               
+            </div>
+           <div className='my-2 flex gap-2'>
+                <h2>UserId :</h2>
+                <input type="text" name="" id="" value={user.id} className='w-1/2 border px-2 bg-gray-300 text-slate-900 dark:bg-slate-800 dark:text-white' />
+                {/* <p>{user.name}</p> */}
+
+                 
+               
+            </div>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import AboutMe from './components/ui/AboutMe';
 import AI from './components/AiUi/AI';
 import MyEvents from './components/ui/MyEvents';
 import Footer from './components/Footer';
+import AddEvent from './components/AddEvent';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path='/aboutme' element={<AboutMe/>}/>
         <Route path='/ai' element={<AI/>}/>
         <Route path='/myevents' element={<MyEvents/>}/>
+        <Route path='/addevents' element={<AddEvent/>}/>
         
        </Routes>
        <Footer/>

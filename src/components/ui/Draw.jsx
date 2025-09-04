@@ -45,7 +45,7 @@ const Draw = ({name}) => {
 // const adminMenu = ['About me', 'Add Event', 'All Events', 'See Feedbacks','Ask AI'];
   const adminMenu = [
      { text: "About Me", path: "/aboutme", icon: <AccountCircleIcon sx={{ fontSize: 30 }} /> },
-      { text: "Add Events", path: "/events", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
+      { text: "Add Events", path: "/addevents", icon: <EmojiEventsIcon sx={{fontSize:30}}/> },
       { text: "All Events", path: "/events", icon: <EventIcon sx={{fontSize:30}}/> },
       { text: "See Feedbacks", path: "/events", icon: <ThumbUpAltIcon sx={{fontSize:30}}/> },
 
